@@ -13,6 +13,13 @@ async function checkWeather(){
     document.querySelector(".humid").innerHTML = data.main.humidity + " %"
     document.querySelector(".wind_speed").innerHTML = data.wind.speed + " km/h"
 }
+function airCondition(){
+    const weatherIcon = document.querySelector(".weatherIcon")
+    if (data.weather[0].main == "Cloudy"){
+        weatherIcon.src = "/weather-app-img/images/clouds.png"
+    }
+} 
+
 searchBtn.addEventListener("click", ()=>{
     checkWeather()
     document.querySelector(".search").value = null
