@@ -1,6 +1,7 @@
 const apiKey = "468ca14c577da77de93431bfcc22f150"
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 const searchBtn = document.getElementById("searchBtn")
+const weatherIcon = document.querySelector(".weatherIcon")
 
 
 async function checkWeather(){
@@ -14,7 +15,6 @@ async function checkWeather(){
     document.querySelector(".wind_speed").innerHTML = data.wind.speed + " km/h"
 }
 function airCondition(){
-    const weatherIcon = document.querySelector(".weatherIcon")
     if (data.weather[0].main == "Cloudy"){
         weatherIcon.src = "/weather-app-img/images/clouds.png"
     }
