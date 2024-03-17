@@ -7,8 +7,11 @@ const weatherIcon = document.querySelector(".weatherIcon");
 async function checkWeather() {
   const city = document.querySelector(".search").value;
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  if (response.status == 404){
+    document.querySelector(".weather").style.display = "none"
+    document.querySelector(".error").style.display = "block"
+}else{
   var data = await response.json();
-  if (response.status != 404){
     console.log(data);
 
   document.querySelector(".city").innerHTML = data.name;
@@ -33,11 +36,10 @@ async function checkWeather() {
     weatherIcon.src = "weather-app-img/images/drizzle.png";
   }
   document.querySelector(".weather").style.display = "block"
-  }else{
-    document.querySelector(".error").style.display = "block"
+  document.querySelector(".error").style.display = "none"
   }
-  
 }
+
 searchBtn.addEventListener("click", () => {
   checkWeather();
   document.querySelector(".search").value = null;
